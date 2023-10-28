@@ -3,15 +3,12 @@ import { toast } from 'react-toastify';
 import { FcLike } from 'react-icons/fc';
 import {
   StyledWrapper,
-  RightCenterButton,
-  LeftCenterButton,
-  UnderPhotoButton,
+  CrossButton,
   ImageContainer,
   StyledImage,
   Title,
   LikeButton,
   ImageInfo,
-  DeleteButton,
 } from './Modal.Styled';
 import propTypes from 'prop-types';
 
@@ -48,9 +45,7 @@ export class Modal extends React.Component {
 
     return (
       <StyledWrapper onClick={this.handleClickOutside}>
-        <RightCenterButton onClick={this.props.next}>→</RightCenterButton>
-        <LeftCenterButton onClick={this.props.back}>←</LeftCenterButton>
-        <UnderPhotoButton onClick={close}>✕</UnderPhotoButton>
+        <CrossButton onClick={close}>✕</CrossButton>
 
         <div>
           <div>
@@ -60,14 +55,12 @@ export class Modal extends React.Component {
                 alt={selectedPhoto.tags}
               />
             </ImageContainer>
-
             <ImageInfo>
               <Title>{selectedPhoto.tags}</Title>
               <LikeButton>
                 <FcLike />
-                {selectedPhoto.likes}
+                <span>{selectedPhoto.likes}</span>
               </LikeButton>
-              <DeleteButton>Delete</DeleteButton>
             </ImageInfo>
           </div>
         </div>

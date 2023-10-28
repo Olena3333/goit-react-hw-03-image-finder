@@ -1,43 +1,47 @@
 import React, { Component } from 'react';
 import {
-  SearchbarHeader,
+  SearchbarWrapper,
   SearchForm,
-  SearchFormButton,
-  SearchFormButtonLabel,
+  StyledButton,
   SearchFormInput,
-} from './ImageFinder.Styled';
-import { Search } from 'lucide-react';
+} from './ImageGallery.Styled';
 export class Searchbar extends Component {
   state = {
     searchValue: '',
   };
   handleSubmit = event => {
     event.preventDefault();
+    if (!this.state.searchValue) {
+      return;
+    }
     this.props.setQuery(this.state.searchValue);
     this.setState({ searchValue: '' });
   };
+  handleOnChange = e => {
+    this.setState({ searchValue: e.target.value });
+  };
+
   render() {
     return (
-      <SearchbarHeader>
-        <SearchForm onSubmit={this.handleSubmit}>
-          <SearchFormButton type="submit">
-            <SearchFormButtonLabel>
-              <Search size={24} color="#1d2add" />
-            </SearchFormButtonLabel>
-          </SearchFormButton>
-
+      <SearchbarWrapper>
+        <SearchForm onSubmit={this.handleSubmit} className="form">
           <SearchFormInput
-            onChange={event =>
-              this.setState({ searchValue: event.target.value })
-            }
+            onChange={this.handleOnChange}
             value={this.state.searchValue}
             type="search"
             autoComplete="off"
             autoFocus
-            placeholder="Feel free to search photos"
+            placeholder="What are you looking for?"
           />
+          <StyledButton
+            // disabled={this.props.query.trim() === this.state.searchValue.trim()}
+            type="submit"
+            className="button"
+          >
+            Search
+          </StyledButton>
         </SearchForm>
-      </SearchbarHeader>
+      </SearchbarWrapper>
     );
   }
 }

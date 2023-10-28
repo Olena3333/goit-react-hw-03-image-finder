@@ -7,8 +7,7 @@ import {
   ImageInfo,
   Title,
   LikeButton,
-  DeleteButton,
-} from './ImageFinder.Styled';
+} from './ImageGallery.Styled';
 import { cutText } from '../helpers/cutText';
 import propTypes from 'prop-types';
 export const ImageGalleryItem = ({
@@ -27,9 +26,8 @@ export const ImageGalleryItem = ({
         <ImageInfo>
           <LikeButton>
             <FcLike />
-            {likes}
+            <span>{likes}</span>
           </LikeButton>
-          <DeleteButton>Delete</DeleteButton>
         </ImageInfo>
       </div>
     </GalleryItem>
