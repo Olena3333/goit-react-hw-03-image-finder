@@ -34,7 +34,7 @@ export class Searchbar extends Component {
             placeholder="What are you looking for?"
           />
           <StyledButton
-            // disabled={this.props.query.trim() === this.state.searchValue.trim()}
+            disabled={!this.state.searchValue}
             type="submit"
             className="button"
           >
