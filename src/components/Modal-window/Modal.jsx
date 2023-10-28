@@ -15,7 +15,10 @@ import propTypes from 'prop-types';
 export class Modal extends React.Component {
   intervalId = null;
   timeoutId = null;
-
+  static propTypes = {
+    close: propTypes.func.isRequired,
+    selectedPhoto: propTypes.object.isRequired,
+  };
   handleKeyDown = e => {
     if (e.key === 'Escape') {
       this.props.close();
@@ -67,9 +70,4 @@ export class Modal extends React.Component {
       </StyledWrapper>
     );
   }
-
-  static propTypes = {
-    close: propTypes.func.isRequired,
-    selectedPhoto: propTypes.object.isRequired,
-  };
 }

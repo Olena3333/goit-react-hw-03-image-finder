@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 export const Button = ({ loading, onClick }) => {
   return (
-    <LoadmoreBtn onClick={onClick} type="button">
+    <LoadmoreBtn onClick={onClick}>
       {!loading ? 'Load more' : 'Loading...'}
     </LoadmoreBtn>
   );

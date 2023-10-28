@@ -7,6 +7,6 @@ export const INITIAL_STATE_POSTS = {
   selectedPhoto: null,
   page: 1,
   per_page: 12,
-  q: '',
+  q: 'cat',
   currentPhotoIndex: 0,
 };

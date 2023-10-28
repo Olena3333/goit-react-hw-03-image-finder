@@ -14,7 +14,7 @@ export class App extends React.Component {
   state = { ...INITIAL_STATE_POSTS };
   async componentDidMount() {
     this.getPhotos();
-    toast.info('Welcome');
+    toast.info('Start');
   }
 
   async componentDidUpdate(_, prevState) {
@@ -33,8 +33,8 @@ export class App extends React.Component {
   };
 
   getPhotos = async () => {
-    this.setState({ loading: true });
     const { per_page, page, q } = this.state;
+    this.setState({ loading: true });
 
     try {
       const response = await fetchPics({
@@ -42,16 +42,24 @@ export class App extends React.Component {
         page,
         q,
       });
+      if (response.total === undefined || response.total <= 0) {
+        this.setState({
+          error: 'Total count is missing or invalid',
+          loading: false,
+        });
+        toast.error('Total count is missing or invalid');
+        return;
+      }
       this.setState(prevState => ({
         photos: [...prevState.photos, ...response.hits],
         total: response.total,
         loading: false,
       }));
     } catch (error) {
-      this.setState({ error: error.message, loading: false });
+      this.setState({ error: error.message });
       toast.error(error.message);
     } finally {
-      this.setState({ isLoading: false });
+      this.setState({ loading: false });
     }
   };
 
@@ -61,7 +69,7 @@ export class App extends React.Component {
       if (isOpened) {
         toast.success('Loading...');
       } else {
-        toast.info('Choose another query');
+        toast.success('Choose another query');
       }
       return {
         isOpened,
