@@ -11,6 +11,5 @@ export const fetchPics = async params => {
       ...params,
     },
   });
-
   return data;
 };
