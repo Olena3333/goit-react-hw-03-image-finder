@@ -9,7 +9,7 @@ import {
   LikeButton,
 } from './ImageGallery.Styled';
 import { cutText } from '../helpers/cutText';
-import propTypes from 'Prop-types';
+import propTypes from 'prop-types';
 export const ImageGalleryItem = ({
   webformatURL,
   tags,
@@ -34,7 +34,7 @@ export const ImageGalleryItem = ({
   );
 };
 
-ImageGalleryItem.PropTypes = {
+ImageGalleryItem.propTypes = {
   webformatURL: propTypes.string.isRequired,
   tags: propTypes.string.isRequired,
   toggleModal: propTypes.func.isRequired,
