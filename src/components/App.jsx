@@ -91,7 +91,6 @@ export class App extends React.Component {
             Image Gallery search request: {q} and results: {total}
           </GalleryTitle>
         )}
-        <h2>{this.state.error}</h2>
         {loading && !photos.length ? (
           <LoaderContainer>
             <BallTriangle
